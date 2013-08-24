@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../polymer/polymer.js"></script>
+	</head>
+	<body>
+		<element name="x-foo" attributes="data">
+			<template>
+				<input type="checkbox" checked="{{data.checked}}">
+				checked: {{data.checked}}
+			</template>
+			<script>
+				Polymer.register(this, {
+					data: {
+						checked: false
+					},
+					toggle: function() {
+						this.data.checked = !this.data.checked;
+						console.log(JSON.stringify(this.data));
+					}
+				});
+			</script>
+		</element>
+		<element name="x-foo-list">
+			<template>
+				<template repeat="{{data}}">
+					<x-foo data="{{}}"></x-foo>,
+					<!--<input type="checkbox" checked="{{checked}}">//-->
+					data: {{checked}}
+					<br>
+				</template>
+				<x-foo data="{{data.0}}"></x-foo>,
+				data: {{data.0.checked}}
+				<br>
+				<x-foo data="{{data.1}}"></x-foo>,
+				data: {{data.1.checked}}
+				<br>
+			</template>
+			<script>
+				Polymer.register(this, {
+					data: [{
+						checked: false
+					}, {
+						checked: true
+					}]
+				});
+			</script>
+		</element>
+		<div>
+			<x-foo-list id="foolist"></x-foo-list><br>
+			<!--<x-foo></x-foo>//-->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../polymer/polymer.js"></script>
+	</head>
+	<body>
+		<polymer-element name="x-foo" on-click="clickHandler2">
+			<template>
+				<div on-click="clickHandler">
+					<content></content>
+				</div>
+				<div on-click="clickHandler">
+					<content select="div"></content>
+				</div>
+			</template>
+			<script>
+				Polymer('x-foo', {
+					clickHandler: function(e) {
+						console.log('click', e.target);
+					},
+					clickHandler2: function(e) {
+						console.log('click2', e.target);
+					}
+				});
+			</script>
+		</polymer-element>
+		<x-foo>
+			hi
+			<div>I'm a div!</div>
+		</x-foo>
+	</body>
+</html>

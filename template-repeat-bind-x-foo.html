@@ -1,0 +1,22 @@
+<polymer-element name="x-foo" attributes="items">
+	<template>
+		<style>
+			@host {
+				:scope {
+					color: red;
+				}
+			}
+		</style>
+		<template repeat="{{items}}">
+			item: {{}}
+		</template>
+	</template>
+	<script>
+		Polymer('x-foo', {
+			items: null,
+			created: function() {
+				this.items = [];
+			}
+		});
+	</script>
+</polymer-element>

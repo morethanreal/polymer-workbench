@@ -1,0 +1,27 @@
+<link id="lnk" rel="import" href="template.html">
+<link rel="import" href="polymer-element.html">
+<script src="../../polymer/polymer.js" debug></script>
+<body>
+	<div id="container"></div>
+	<x-el></x-el>
+	<template id="tmpl-inline">
+		<script>
+			console.log('Hello world 2!');
+		</script>
+	</template>
+	<script>
+		document.addEventListener('WebComponentsReady', function() {
+			var inline = document.querySelector('#tmpl-inline');
+			container.appendChild(inline.content.cloneNode(true));
+			var tmpl = lnk.content.querySelector('#tmpl');
+			var cloned = tmpl.content.cloneNode(true);
+			var ci = tmpl.createInstance();
+			var adopted = document.adoptNode(cloned);
+			var imported = document.importNode(cloned, true);
+			console.log('cloned', cloned, cloned.ownerDocument, imported, imported.ownerDocument, ci, ci.ownerDocument);
+			//container.appendChild(imported);
+			//container.appendChild(cloned.querySelector('script'));
+			container.appendChild(ci);
+		});
+	</script>
+</body>

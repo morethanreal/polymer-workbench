@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../ShadowDOM/shadowdom.js"></script>
+		<style>
+			.animated {
+				-webkit-transition: -webkit-transform 0.5s
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			function animate(node) {
+				node.left = node.left ? 0 : 300;
+				node.setAttribute('style', '-webkit-transition:-webkit-transform 0.5s;-webkit-transform:translate3d(' + node.left + 'px,0px,0)');
+			}
+			document.addEventListener('DOMContentLoaded', function() {
+				var left = 0;
+				var el = document.createElement('div');
+				el.textContent = 'click to animate (in shadow root)';
+				el.addEventListener('click', function() {
+					animate(el);
+				});
+				var div = document.createElement('div');
+				var root = div.createShadowRoot();
+				root.appendChild(el);
+				document.body.appendChild(div);
+
+				var left2 = 0;
+				var div2 = document.createElement('div');
+				div2.textContent = 'click to animate';
+				div2.addEventListener('click', function() {
+					animate(div2);
+				});
+				document.body.appendChild(div2);
+			});
+		</script>
+	</body>
+</html>

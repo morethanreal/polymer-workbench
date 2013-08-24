@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../polymer/polymer.js"></script>
+		<style>
+			x-foo, x-bar {
+				display: block;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<polymer-element name="x-foo">
+			<template>
+				<style>
+					@host {
+						:scope {
+							background-color: yellow;
+						}
+					}
+					h1 {
+						color: red;
+					}
+				</style>
+				<h1>x-foo</h1>
+			</template>
+			<script>
+				Polymer('x-foo');
+			</script>
+		</polymer-element>
+		<polymer-element name="x-bar" extends="x-foo">
+			<template>
+				<shadow></shadow>
+				<h1>hi x-bar</h1>
+			</template>
+			<script>
+				Polymer('x-bar');
+			</script>
+		</polymer-element>
+		<x-foo></x-foo>
+		<x-bar></x-bar>
+	</body>
+</html>

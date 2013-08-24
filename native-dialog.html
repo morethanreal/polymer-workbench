@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../polymer/polymer.js"></script>
+	</head>
+	<body>
+		<div id="host"></div>
+		<dialog id="native">
+			I'm a native dialog <button>a button</button>
+		</dialog>
+		<button onclick="openNative()">native</button>
+		<button onclick="openNativeShadow()">native in shadow</button>
+		<button onclick="openPolymer()">polymer</button>
+		<polymer-element name="x-dialog">
+			<template>
+				<dialog id="dialog">
+					Hello polymer
+					<content></content>
+				</dialog>
+			</template>
+			<script>
+				Polymer('x-dialog', {
+					toggle: function() {
+						if (this.$.dialog.open) {
+							this.$.dialog.close();
+						} else {
+							this.$.dialog.show();
+						}
+					}
+				});
+			</script>
+		</polymer-element>
+		<x-dialog id="polymer">
+			<div style="color:limegreen">foo</div>
+		</x-dialog>
+		<script>
+			var shadowDialog;
+			document.addEventListener('DOMContentLoaded', function() {
+				shadowDialog = document.createElement('dialog');
+				shadowDialog.textContent = 'a dialog in shadow DOM';
+				var root = document.querySelector('#host').webkitCreateShadowRoot();
+				root.appendChild(shadowDialog);
+			});
+			function toggle(d) {
+				if (d.open) {
+					d.close();
+				} else {
+					d.show();
+				}
+			}
+			function openNative() {
+				toggle(document.querySelector('#native'));
+			}
+			function openNativeShadow() {
+				toggle(shadowDialog);
+			}
+			function openPolymer() {
+				document.querySelector('#polymer').toggle();
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+<link rel="import" href="../polymer-elements/polymer-overlay/polymer-overlay.html">
+<polymer-element name="x-dialog" extends="polymer-overlay">
+	<template>
+		<link rel="stylesheet" href="../polymer-elements/polymer-overlay/polymer-overlay.css">
+		<div id="dialog">
+			<h1>Hi!</h1>
+		</div>
+	</template>
+	<script>
+		Polymer('x-dialog', {
+			ready: function() {
+				//this.target = this.$.dialog;
+				this.target = this;
+			}
+		});
+	</script>
+</polymer-element>

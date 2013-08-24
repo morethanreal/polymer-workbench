@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Platform bug?</title>
+  <script src="../platform/platform.js" debug></script>
+</head>
+<body>
+  
+  <!-- Inner Element -->
+  <element name="x-inner">
+    <section id="contents">
+      <div>
+        <label>
+        An Input
+        <input type="text">
+        </label>
+      </div>
+    </section>
+    
+    <script>
+      var _host = this;
+      var _element;
+      
+      this.register({ 
+        prototype: {
+          readyCallback: function(){
+            _element = this;
+            _element.appendChild(_host.querySelector("#contents").cloneNode(true));
+          }
+        }
+      });
+    </script>
+  </element>
+  
+  
+  <!-- Outer Element -->
+  <element name="x-outer">
+    <section id="contents">
+      <div id="container">
+        <x-inner></x-inner> <!-- inner is only asked for once -->
+      </div>
+    </section> 
+    
+    <script>
+      var _host = this;
+      var _element;
+      
+      this.register({
+        prototype: {
+          readyCallback: function(){
+            _element = this;
+            _element.appendChild(_host.querySelector("#contents").cloneNode(true));
+          } 
+        }
+      });
+    </script>
+  </element>
+  
+  
+  <!-- Instantiate the outer element.  It contains only one instance of the x-inner element,
+but two inputs are rendered -->
+  
+  <x-outer></x-outer>
+    
+    
+</body>
+</html>

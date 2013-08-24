@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<link href="template-repeat-bind-x-foo.html" rel="import">
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+	<polymer-element name="x-data" attributes="values">
+		<script>
+			Polymer('x-data', {
+				values: ['a', 'b', 'c']
+			});
+		</script>
+	</polymer-element>
+	<polymer-element name="x-content">
+		<template>
+			x-content:
+			<content select=".repeat"></content>
+			<content></content>
+		</template>
+		<script>
+			Polymer('x-content');
+		</script>
+	</polymer-element>
+	<polymer-element name="x-repeat" attributes="data data2">
+		<template>
+			<x-data id="data"></x-data>
+			<x-content>
+				<span class="repeat">// repeat {{d}}</span>
+				data: {{$.data.values}}<br>
+				x-foo: <x-foo items="{{$.data.values}}"></x-foo><br>
+			</x-content>
+		</template>
+		<script>
+			Polymer('x-repeat', {
+				data: [1, 2, 3],
+				data2: ['d', 'e', 'f']
+			});
+		</script>
+	</polymer-element>
+	<x-repeat></x-repeat>
+</body>
+</html>

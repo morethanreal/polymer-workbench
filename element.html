@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../platform/platform.js"></script>
+	</head>
+	<body>
+		<x-foo></x-foo>
+		<element name="x-foo">
+			<script>
+				if (this !== window) {
+					this.register({
+						prototype: {
+							createdCallback: function() {
+								console.log('createdCallback');
+							}
+						}
+					})
+				}
+			</script>
+		</element>
+	</body>
+</html>

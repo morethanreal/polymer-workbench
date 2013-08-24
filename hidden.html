@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+  <script src="../polymer/polymer.min.js"></script>
+</head>
+<body>
+  <element name="x-hidden" attributes="isHidden">
+    <template>
+      <div hidden?="{{isHidden}}">I'm hidden! (isHidden: {{isHidden}})</div>
+      <button on-dblclick="toggle">Toggle</button>
+    </template>
+    <script>
+      Polymer.register(this, {
+        isHidden: true,
+        toggle: function() {
+          this.isHidden = !this.isHidden;
+        }
+      });
+    </script>
+  </element>
+  <x-hidden></x-hidden>
+</body>
+</html>

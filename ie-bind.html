@@ -1,0 +1,35 @@
+<script src="../polymer/polymer.js"></script>
+<body>
+	<element name="x-foo" attributes="foo">
+		<template>
+			foo is: {{foo}}
+		</template>
+		<script>
+			Polymer.register(this, {
+				foo: 'default'
+			});
+		</script>
+	</element>
+	<element name="x-foo-list">
+		<template>
+			<template repeat="{{data}}">
+				x-foo: <x-foo foo="{{foo}}"></x-foo><br>
+				foo: {{foo}}<br>
+			</template>
+		</template>
+		<script>
+			Polymer.register(this, {
+				data: [
+					{foo: 'foo1'}
+				]
+			});
+		</script>
+	</element>
+	<x-foo-list></x-foo-list>
+	<script>
+		function changefoo(i, value) {
+			var el = document.querySelector('x-foo-list');
+			el.data[i].foo = value;
+		}
+	</script>
+</body>

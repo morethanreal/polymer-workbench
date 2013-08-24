@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<link rel="import" href="../polymer-elements/polymer-animation/polymer-animation.html">
+<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+  <polymer-element name="test-animation" extends="polymer-animation">
+    <script>
+      Polymer('test-animation', {
+        duration: 1,
+        keyframes: [{opacity: 1},{opacity: 0.5}]
+      });
+    </script>
+  </polymer-element>
+  <test-animation id="anim"></test-animation>
+  <div id="target">hello!</div>
+	<script>
+		document.addEventListener('WebComponentsReady', function() {
+			anim.target = target;
+		});
+	</script>
+</body>
+</html>

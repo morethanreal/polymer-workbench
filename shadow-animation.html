@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<script src="../ShadowDOM/shadowdom.js"></script>
+	<script src="../web-animations-js/web-animations.js"></script>
+</head>
+<body>
+	<div id="target">hi</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var animation = new Animation(document.querySelector('#target'), [
+				{opacity: 1}, {opacity: 0}, {opacity: 1}
+			], {duration: 1});
+			animation.onstart = function() {};
+			document.timeline.play(animation);
+		});
+	</script>
+</body>
+</html>

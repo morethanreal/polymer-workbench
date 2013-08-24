@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../polymer/polymer.js"></script>
+	</head>
+	<body>
+		<element name="x-foo">
+			<template>
+				<style>
+					.foo {
+						color: red;
+					}
+					.bar {
+						font-size: 20px;
+					}
+				</style>
+				foo: {{foo}}, bar: {{bar}}<br>
+				output: {{foo: foo; bar: bar}}
+				<div class="{{foo: baz.a; bar: baz.b}}">Hello</div>
+			</template>
+			<script>
+				Polymer.register(this, {
+					foo: true,
+					bar: true,
+					baz: {
+						a: true,
+						b: false
+					}
+				});
+			</script>
+		</element>
+		<x-foo></x-foo>
+	</body>
+</html>

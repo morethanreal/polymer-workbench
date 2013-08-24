@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="import" href="overlay-dialog.html">
+		<script src="../polymer/polymer.js"></script>
+	</head>
+	<body>
+		<x-dialog id="d"></x-dialog>
+		<button onclick="toggleDialog()">Click me!</button>
+		<script>
+			function toggleDialog() {
+				wrap(d).toggle();
+			}
+		</script>
+	</body>
+</html>

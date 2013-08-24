@@ -1,0 +1,32 @@
+<script src="../mdv/mdv.js"></script>
+<script src="../mdv/util/expression_syntax.js"></script>
+
+<body>
+	<template id="tmpl" repeat="{{data}}">
+		<input type="checkbox" checked="{{checked}}"> {{checked}}
+	</template>
+
+	<br>
+
+	<template id="tmpl2" bind>
+		<input type="checkbox" checked="{{checked}}"> {{checked}}
+	</template>
+
+	<script>
+		var model = {
+			data: [{
+				checked: true
+			}, {
+				checked: false
+			}]
+		};
+		document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('tmpl').bindingDelegate = new ExpressionSyntax();
+			document.getElementById('tmpl').model = model
+			document.getElementById('tmpl2').model = {
+				checked: true
+			};
+			Platform.performMicrotaskCheckpoint();
+		});
+	</script>
+</body>
