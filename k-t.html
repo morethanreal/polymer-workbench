@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>WebComponent Test</title>
+    <meta charset="UTF-8"/>
+    <script src="../polymer/polymer.js" debug></script>
+    <polymer-element name="k-t" attributes="text">
+      <template>
+        <div>{{text}}</div>
+      </template>
+			<script>
+				Polymer('k-t', {
+					text: 'HI',
+				});
+			</script>
+    </polymer-element>
+		<k-t></k-t>
+  </head>
+<body>
+</body>
+</html>
