@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+		var t1 = new Date();
+	</script>
+	<script src="../platform/platform.js"></script>
+	<script>
+		var t2 = new Date();
+	</script>
+</head>
+<body>
+	<script>
+		document.body.appendChild(document.createTextNode('load: ' + (t2 - t1)));
+	</script>
+</body>
+</html>
