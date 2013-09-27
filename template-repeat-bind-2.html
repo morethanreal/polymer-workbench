@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+	<polymer-element name="x-foo" attributes="data">
+		<template>
+			{{data}}
+		</template>
+		<script>
+			Polymer('x-foo');
+		</script>
+	</polymer-element>
+	<polymer-element name="x-repeat">
+		<template>
+			<template repeat="{{data}}">
+				<x-foo data="{{value}}"></x-foo>
+			</template>
+		</template>
+		<script>
+			Polymer('x-repeat', {
+				data: [{
+					value: 'foo'
+				}, {
+					value: 'bar'
+				}]
+			});
+		</script>
+	</polymer-element>
+	<x-repeat></x-repeat>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+	<polymer-element name="x-foo" attributes="title">
+		<template>
+			Hi {{title}}!
+		</template>
+		<script>
+			Polymer('x-foo', {
+				title: 'default title'
+			});
+		</script>
+	</polymer-element>
+	<x-foo title="x-foo title"></x-foo>
+</body>
+</html>

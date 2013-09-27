@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+	<polymer-element name="x-foo" extends="input" attributes="value">
+		<script>
+			Polymer('x-foo', {
+			});
+		</script>
+	</polymer-element>
+	<input is="x-foo" value="I'm an x-foo">
+</body>
+</html>
