@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+	<polymer-element name="x-foo" attributes="foo">
+		<template>
+			hi {{* expr}}
+		</template>
+		<script>
+			Polymer('x-foo', {
+				created: function() {
+					// try {
+					// 	throw new Error();
+					// } catch (ex) {
+					// 	console.error('error');
+					// }
+					//this.foo = 1;
+				}
+			});
+		</script>
+	</polymer-element>
+	<x-foo></x-foo>
+</body>
+</html>

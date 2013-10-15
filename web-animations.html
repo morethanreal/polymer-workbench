@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../polymer-elements/polymer-animation/polymer-animation.html" rel="import">
+	<link href="../polymer-elements/polymer-animation/polymer-animation-group.html" rel="import">
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+  <polymer-element name="transition-hslide-scale-out" extends="polymer-animation-group">
+    <template>
+      <polymer-animation id="scale-out" duration="0.5">
+        <polymer-animation-keyframe>
+          <polymer-animation-prop name="transform" value="scale(1)"></polymer-animation-prop>
+        </polymer-animation-keyframe>
+        <polymer-animation-keyframe>
+          <polymer-animation-prop name="transform" value="scale(0.8)"></polymer-animation-prop>
+        </polymer-animation-keyframe>
+      </polymer-animation>
+      <polymer-animation id="hslide-in" duration="0.5">
+        <polymer-animation-keyframe>
+          <polymer-animation-prop name="transform" value="translateX(100%)"></polymer-animation-prop>
+        </polymer-animation-keyframe>
+        <polymer-animation-keyframe>
+          <polymer-animation-prop name="transform" value="translateX(0)"></polymer-animation-prop>
+        </polymer-animation-keyframe>
+      </polymer-animation>
+    </template>
+    <script>
+    	Polymer('transition-hslide-scale-out', {
+    	})
+    </script>
+  </polymer-element>
+  <polymer-element name="web-animations-test">
+  	<template>
+		  <transition-hslide-scale-out id="animation" duration="2.5"></transition-hslide-scale-out>
+			<div id="target1">hi!</div>
+			<div id="target2">another one</div>
+		</template>
+		<script>
+			Polymer('web-animations-test', {
+				ready: function() {
+					var animations = this.$.animation.childAnimationElements;
+	        animations[0].target =  this.$.target1;
+	        animations[1].target = this.$.target2;
+					this.$.animation.play();
+	        console.log('play', this.$.animation.animation);
+				// var duration = 0.5;
+				// var a1 = new Animation(document.querySelector('#target1'), [
+				// 	{'transform': 'translateX(0)'}, {'transform': 'translateX(100%)'}
+				// ], {
+				// 	duration: duration
+				// });
+				// var a2 = new Animation(document.querySelector('#target2'), [
+				// 	{'transform': 'translateX(100%)'}, {'transform': 'translateX(0)'}
+				// ], {
+				// 	duration: duration
+				// });
+				// var group = new ParGroup([a1, a2], {
+				// 	duration: duration * 2
+				// });
+				// document.timeline.play(group);
+				}
+			});
+		</script>
+	</polymer-element>
+	<web-animations-test></web-animations-test>
+</body>
+</html>
