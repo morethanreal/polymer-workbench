@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<script src="../web-animations-js/web-animations.js"></script>
+</head>
+	<div id="target">hi</div>
+	<button onclick="runAnimation()">animate</button>
+	<button onclick="applyStyle()">-webkit-transform: translateY(100px)</button>
+	<script>
+		function runAnimation() {
+			var a = new Animation(document.querySelector('#target'), [
+				{'opacity': 1},
+				{'opacity': 0},
+				{'opacity': 1}
+			], {duration: 0.3});
+			console.log(a);
+			document.timeline.play(a);
+		}
+
+		function applyStyle() {
+			document.querySelector('#target').style['-webkit-transform'] = 'translateY(100px)';
+		}
+	</script>
+</html>

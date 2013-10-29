@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../labs/list/elements/polymer-list/polymer-list.html" rel="import">
+	<script src="../polymer/polymer.js"></script>
+</head>
+<body>
+	<polymer-element name="polymer-list-example">
+		<template>
+			<polymer-list data="{{data}}" listData="{{listData}}">
+				<template repeat="{{c in listData}}">
+					<div class="{{c.page}}">
+						{{c.value}}
+					</div>
+				</template>
+			</polymer-list>
+		</template>
+		<script>
+			Polymer('polymer-list-example', {
+				ready: function() {
+					this.data = [];
+					for (var i = 0; i < 1000; i++) {
+						this.data.push({value: 'item ' + i});
+					}
+				}
+			});
+		</script>
+	</polymer-element>
+	<polymer-list-example></polymer-list-example>
+</body>
+</html>

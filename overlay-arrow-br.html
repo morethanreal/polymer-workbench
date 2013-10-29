@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../polymer-ui-elements/polymer-ui-arrow/polymer-ui-arrow.html" rel="import">
+	<link href="../polymer-ui-elements/polymer-ui-overlay/polymer-ui-overlay.html" rel="import">
+	<script src="../polymer/polymer.js"></script>
+	<link href="../polymer-ui-elements/basic.css" rel="stylesheet">
+</head>
+<body>
+	<polymer-element name="overlay-demo">
+		<template>
+			<link href="../polymer-ui-elements/basic.css" rel="stylesheet">
+			<style>
+				/* @polyfill @host */
+				:host {
+					display: block;
+					position: relative;
+					border: 1px solid black;
+					width: 500px;
+					padding: 20px;
+				}
+				#errorOverlay {
+					position: absolute !important;
+					left: 10px;
+					top: 38px !important;
+					right: 10px;
+					box-sizing: border-box;
+				}
+				#errorOverlay::x-overlay {
+					background: transparent;
+					font-family: 'Helvetica Neue Medium', HelveticaNeue-Medium, Helvetica, sans-serif;
+				}
+				#errorOverlay polymer-ui-arrow {
+					position: absolute !important;
+					right: 21px;
+					top: 0px;
+				}
+				#errorOverlay .overlayBody {
+					position: absolute;
+					padding: 25px;
+					border-radius: 3px;
+					left: 0;
+					right: 0;
+				}
+				#errorOverlay .overlayLabel {
+					color: #b6b6b6;
+				}
+			</style>
+			<button on-tap="toggleAction">Toggle</button>
+			<polymer-ui-overlay id="errorOverlay">
+				<polymer-ui-arrow color="#2b2b2b" borderColor="#2b2b2b"></polymer-ui-arrow>
+				<br>
+				<div class="overlayBody polymer-ui-dark-bg" overlay-toggle>
+					<span class="overlayLabel">Error:</span> Invalid phone number
+				</div>
+			</polymer-ui-overlay>
+		</template>
+		<script>
+			Polymer('overlay-demo', {
+				toggleAction: function() {
+					this.$.errorOverlay.toggle();
+				}
+			});
+		</script>
+	</polymer-element>
+	<overlay-demo></overlay-demo>
+</body>
+</html>
