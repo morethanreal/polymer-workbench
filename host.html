@@ -5,7 +5,7 @@
   <script src="../components/platform/platform.js"></script>
 </head>
 <body>
-  <polymer-element name="x-host" noscript>
+  <polymer-element name="x-post" noscript>
     <template>
       <style>
         :host {
@@ -17,18 +17,27 @@
         :host(.baz:host) {
           color: red;
         }
+        :host(.zot:not(.bar)) {
+          color: orange;
+        }
       </style>
       <content></content>
     </template>
   </polymer-element>
-  <x-host>Hi!</x-host>
+  <x-post>Hi!</x-post>
   <div class="bar">
-    <x-host>I should be blue</x-host>
+    <x-post>I should be blue</x-post>
   </div>
-  <x-host class="bar">I should also be blue</x-host>
-  <x-host class="baz">I should be red</x-host>
+  <x-post class="bar">I should also be blue</x-post>
+  <x-post class="baz">I should be red</x-post>
   <div class="baz">
-    <x-host>I should not be red</x-host>
+    <x-post>I should not be red</x-post>
+  </div>
+  <div class="zot">
+    <x-post>I should be orange</x-post>
+  </div>
+  <div class="zot bar">
+    <x-post>I should not be orange</x-post>
   </div>
 </body>
 </html>
