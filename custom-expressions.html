@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../components/polymer-dev/polymer.html" rel="import">
+	<script src="../components/platform-dev/platform.js"></script>
+</head>
+<body>
+	<polymer-element name="x-custom">
+		<template>
+			{{ data | tokenList }}
+			{{ value | dbl }}
+		</template>
+		<script>
+			Polymer('x-custom', {
+				data: {a: 1},
+				value: 2,
+				created: function() {
+					this.syntax = new PolymerExpressions();
+					PolymerExpressions.filters.dbl = function() {
+						return {
+							toDOM: function(n) {
+								console.log(n, Number(n) * 2);
+								return Number(n) * 2;
+							},
+							toModel: function(n) {
+								return Number(n) / 2;
+							}
+						};
+					}
+				}
+			});
+		</script>
+	</polymer-element>
+	<x-custom></x-custom>
+</body>
+</html>
