@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <link href="../components/polymer/polymer.html" rel="import">
+  <script src="../components/platform-dev/platform.js"></script>
+  <script src="../polymer-labs/binding-explorer/binding-explorer.js"></script>
+</head>
+<body>
+  <polymer-element name="x-foo" attributes="value">
+    <template>
+      {{value}}
+    </template>
+    <script>
+      Polymer('x-foo', {
+        valueChanged: function(old) {
+          console.log('valueChanged', old, this.value);
+        }
+      });
+    </script>
+  </polymer-element>
+  <polymer-element name="x-bar" attributes="value" noscript>
+    <template>
+      <x-foo value="{{value}}"></x-foo>
+      <br>
+      <x-foo value="{{value}}"></x-foo>
+    </template>
+  </polymer-element>
+  <button onclick="toggle()">toggle</button>
+  <br>
+  <x-bar value="foo"></x-bar>
+  <script>
+    function toggle() {
+      var el = document.querySelector('x-bar');
+      if (el.value === 'foo') {
+        el.value = 'bar';
+      } else {
+        el.value = 'foo';
+      }
+    }
+  </script>
+</body>
+</html>
