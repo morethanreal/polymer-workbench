@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../components/polymer-ui-toggle-button/polymer-ui-toggle-button.html" rel="import">
+	<script src="../components/platform-dev/platform.js"></script>
+	<script src="../polymer-labs/binding-explorer/binding-explorer.js"></script>
+</head>
+<body>
+	<polymer-element name="x-bind" attributes="value">
+		<template>
+			<polymer-ui-toggle-button value="{{value}}"></polymer-ui-toggle-button>
+			<polymer-ui-toggle-button value="{{value}}"></polymer-ui-toggle-button>
+		</template>
+		<script>
+			Polymer('x-bind', {
+				value: false
+			});
+		</script>
+	</polymer-element>
+	<x-bind></x-bind>
+</body>
+</html>

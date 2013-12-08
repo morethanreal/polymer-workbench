@@ -1,0 +1,94 @@
+
+<polymer-element name="r-ruleset"  >
+  <template>
+      <ul id="uu">
+      <content ></content>
+    </ul>
+  </template>
+  <script>
+ Polymer('r-ruleset', {
+      created: function() {
+        console.log('r-ruleset created');
+      },
+	ready: function() {
+	    console.log("r-ruleset ready ");
+	 
+	},
+      enteredView: function() {
+	  console.log("r-ruleset inserted");
+
+      },
+
+    });
+  </script>
+</polymer-element>
+
+
+<polymer-element name="r-a" attributes="operator openbracket closebracket javatype ">
+  <template>
+   
+      <content></content>
+  </template>
+  <script>
+    Polymer('r-a', {
+      created: function() {
+        console.log('r-a created');
+      },
+	enteredView: function() {
+	    console.log("r-a inserted");
+	},
+
+    });
+  </script>
+</polymer-element>
+
+
+<polymer-element name="r-b"  attributes="value">
+  <template>
+   
+      <content></content>
+  </template>
+  <script>
+    Polymer('r-b', {
+      created: function() {
+        console.log('r-b created');
+      },
+	enteredView: function() {
+	    console.log("r-b inserted");
+	},
+
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="nb-ruleset" >
+  <template>
+Here is the ruleset:
+<r-ruleset >
+  AA: <r-a assignable="false" guid="VARBL13da1ea014fx24f2b"
+  name="clientId" type="int">  
+  BB:   <r-b  closebracket="0" javatype="int" openbracket="0" operator="">
+     
+    </r-b>
+  </r-a>
+</r-ruleset>
+
+</template>
+  <script>
+ Polymer('nb-ruleset', {
+	ready: function() {
+	    console.log("nb-ruleset ready ");
+	 
+	},
+      enteredView: function() {
+	  console.log("nb-ruleset inserted");
+      },
+      fooSignal: function(e, detail, sender) {
+	  console.log("nb-ruleset got  fooSignal ",detail, sender.id);
+      }
+    });
+  </script>
+
+
+
+</polymer-element>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../components/polymer/polymer.html" rel="import">
+	<script src="../components/platform-dev/platform.js"></script>
+</head>
+<body>
+	<polymer-element name="x-a">
+		<script>
+			Polymer('x-a', {
+				created: function() {
+					// console.log('x-a created');
+				},
+				ready: function() {
+					// console.log('x-a ready');
+				},
+				enteredView: function() {
+					console.log('x-a enteredView');
+				}
+			});
+		</script>
+	</polymer-element>
+	<polymer-element name="x-b">
+		<script>
+			Polymer('x-b', {
+				created: function() {
+					// console.log('x-b created');
+				},
+				ready: function() {
+					// console.log('x-b ready');
+				},
+				enteredView: function() {
+					console.log('x-b enteredView');
+				}
+			});
+		</script>
+	</polymer-element>
+	<polymer-element name="x-c">
+	<!--
+		<template>
+			<x-a></x-a>
+			<x-b></x-b>
+		</template>
+	-->
+		<script>
+			Polymer('x-c', {
+				created: function() {
+					// console.log('x-c created');
+				},
+				ready: function() {
+					// console.log('x-c ready');
+				},
+				enteredView: function() {
+					console.log('x-c enteredView');
+				}
+			});
+		</script>
+	</polymer-element>
+	<polymer-element name="x-d">
+		<template>
+			<x-a>
+				<x-b></x-b>
+				<x-c></x-c>
+			</x-a>
+		</template>
+		<script>
+			Polymer('x-d', {
+				created: function() {
+					// console.log('x-d created');
+				},
+				ready: function() {
+					// console.log('x-d ready');
+				},
+				enteredView: function() {
+					console.log('x-d enteredView');
+				}
+			});
+		</script>
+	</polymer-element>
+	<!-- <x-d></x-d> -->
+	<div id="target"></div>
+	<script>
+		document.addEventListener('WebComponentsReady', function() {
+			target.innerHTML = '<x-a><x-b></x-b><x-c></x-c></x-a>';
+			// target.innerHTML = '<x-d></x-d>';
+		});
+		document.register('x-x', {prototype: {
+			createdCallback: function() {
+				console.log('x-x created');
+			},
+			enteredViewCallback: function() {
+				console.log('x-x enteredView');
+			}
+		}});
+		document.register('x-y', {prototype: {
+			createdCallback: function() {
+				console.log('x-y created');
+			},
+			enteredViewCallback: function() {
+				console.log('x-y enteredView');
+			}
+		}});
+		document.register('x-z', {prototype: {
+			createdCallback: function() {
+				console.log('x-z created');
+			},
+			enteredViewCallback: function() {
+				console.log('x-z enteredView');
+			}
+		}});
+	</script>
+	<!--
+	<x-x>
+		<x-y></x-y>
+		<x-z></x-z>
+	</x-x>
+	<x-a>
+		<x-b></x-b>
+		<x-c></x-c>
+	</x-a>
+	-->
+</body>
+</html>

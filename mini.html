@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <!--script src="http://www.polymer-project.org/polymer/polymer.min.js"></script-->
+ <!--<script src="polymer.min.js"></script>-->
+ <link href="../components/polymer/polymer.html" rel="import">
+ <script src="../components/platform-dev/platform.js"></script>
+ </head>
+<body>
+ <link rel="import" href="r-mini.html">
+
+ 
+
+<polymer-element name="my-app">
+  <template>
+  <button on-click="{{clicked}}">Load with innerHTML</button>
+    <div id="here"></div>
+    <content></content>
+  </template>
+  <script>
+    Polymer('my-app', {
+      enteredView: function() {
+	  console.log("my-app inserted");
+      },
+      clicked: function(e, detail, sender) {
+         var doc='nb-ruleset:<nb-ruleset>   </nb-ruleset>'
+   var doc1='r-ruleset <r-ruleset> \
+   AA: <r-a assignable="true" guid="VARBL13df7cdbd37x49ac" name="TodayDayOfWeek" type="DayOfWeek">\
+   BB;  <r-b closebracket="0" javatype="java.lang.String" openbracket="0" operator="">\
+   </r-b>\
+  </r-a> </r-ruleset> '
+	this.$.here.innerHTML=doc;
+      },
+    });
+  </script>
+</polymer-element>
+
+
+
+<!--
+<h2> ruleset loading immediately</h2>
+<nb-ruleset></nb-ruleset>	
+-->
+
+<h2> ruleset loading P2</h2>
+<r-ruleset >
+  AA: <r-a assignable="false" guid="VARBL13da1ea014fx24f2b"
+  name="clientId" type="int">  
+  BB:   <r-b  closebracket="0" javatype="int" openbracket="0" operator="">
+     
+    </r-b>
+  </r-a>
+</r-ruleset>	
+
+ <h2> My app: ruleset loading on click</h2>
+</br>
+<my-app></my-app>
+</br>
+</script>
+</body>
+</html>
+
+

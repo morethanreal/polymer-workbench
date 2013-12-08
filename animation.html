@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<script src="../components/web-animations-js/web-animations.js"></script>
+</head>
+<body>
+  <div style="border: 1px solid black">
+    <div id="div1">foo</div>
+    <div id="div2">bar</div>
+  </div>
+  <script>
+    var a = new Animation(div1, [{transform: 'translateX(0)'}, {transform: 'translateX(150px)'}], {duration: 0.5, xfill: 'auto'});
+    var b = new Animation(div2, [{transform: 'translateX(250px)'}, {transform: 'translateX(50px)'}], {duration: 0.5, fill: 'backwards'});
+    var g = new SeqGroup([a, b], {xfill: 'backwards'});
+    
+    function animate() {
+      console.log(g);
+      document.timeline.play(g);
+    }
+  </script>
+</body>
+</html>
