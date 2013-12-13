@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<link href="../components/polymer/polymer.html" rel="import">
+	<script src="../components/platform-dev/platform.js"></script>
+</head>
+<body>
+	<polymer-element name="x-svg">
+		<template>
+			<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			</svg>
+			<template id="tmpl">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<text x="20" y="{{y}}">{{value}}</text>
+				</svg>
+			</template>
+		</template>
+		<script>
+			Polymer('x-svg', {
+				data: [
+					{y: 40, value: 'foo'},
+					{y: 60, vaule: 'bar'}
+				],
+				y: 40,
+				value: 'hello world!',
+				enteredView: function() {
+					var el = this.$.tmpl.createInstance(this);
+					console.log(el.children[0].children);
+					this.$.svg.appendChild(el.children[0].children[0]);
+				}
+			});
+		</script>
+	</polymer-element>
+	<x-svg></x-svg>
+</body>
+</html>
