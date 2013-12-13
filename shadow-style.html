@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
 	<head>
-		<script src="../polymer/polymer.js"></script>
+		<link href="../components/polymer/polymer.html" rel="import">
+		<script src="../components/platform-dev/platform.js"></script>
 		<style>
 			x-foo, x-bar {
 				display: block;
@@ -13,10 +14,8 @@
 		<polymer-element name="x-foo">
 			<template>
 				<style>
-					@host {
-						:scope {
-							background-color: yellow;
-						}
+					:host {
+						background-color: yellow;
 					}
 					h1 {
 						color: red;
